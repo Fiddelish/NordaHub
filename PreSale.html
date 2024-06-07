@@ -1,0 +1,122 @@
+<html lang="en">
+  <head>
+    <script charset="UTF-8" async type="text/javascript" src="./86f7ce932e_7d8.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>NordaHub PoK Presale</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__video">
+          <video autoplay loop muted playsinline>
+              <source src="assets/asdasdasd.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+      </div>
+      <nav>
+        <div class="nav__actions">
+          <button class="btn" id="Home">Home</button>
+      </div>
+      </nav>
+      <div class="section__container header__container">
+          <div class="header__image">
+              <img src="assets/c7bb652e-aae7-4a69-a924-f65bcfd8cb74.jpg" alt="header" />
+          </div>
+          <div class="header__content">
+              <h1>Proof Of<br>knowledge</h1>
+          
+              <p class="section__description">
+                Welcome to NordaHub's Proof of Knowledge (PoK) token presale! Our innovative model ensures participants are genuinely interested and knowledgeable about our project. By completing educational modules and engaging with our community, you unlock exclusive benefits and access to the presale. This approach fosters a well-informed community, driving our mission forward. With a hardcap of $30,000, PoK tokens are available across multiple chains, ensuring broad accessibility. Join us in revolutionizing the crypto space with a focus on knowledge and engagement. Secure your PoK tokens and be part of the future of digital finance.</p>
+          </div>
+      </div>
+    </header>
+    <div class="presale-section section__container section__description" id="disisgay">
+      <div class="countdown">
+        <p class="countdown-title">Presale Ends In</p>
+        <div id="countdown"></div>
+        <p>Presale erc20/polygon address:<br><span id="presaleAddress">0x091Ffe28B459f06E100E32F29B6c787EB8336206</span></p>
+      </div>
+    </div>
+    <section class="presale-section section__container section__description">
+          <h2>Proof of Knowledge Presale</h2>
+          <div class="presale-details">
+            
+              <div class="presale-info ">
+                <p>NordaHub's token presale is distinguished by its innovative Proof of Knowledge (PoK) model, designed to foster genuine engagement and ensure that participants possess a deep understanding and interest in our project. Unlike traditional token sales, where participation may be driven solely by speculative motives, our PoK model requires individuals to demonstrate their knowledge and engagement before accessing exclusive benefits.
+<br>
+<br>
+                  Central to our presale approach are educational modules meticulously crafted to provide comprehensive insights into cryptocurrency, blockchain technology, and the specific nuances of our project. By completing these modules, participants not only deepen their understanding of the digital finance landscape but also equip themselves with the knowledge necessary to make informed decisions regarding their involvement with NordaHub.
+                  <br>    
+                  <br>              
+                  Furthermore, active engagement with our vibrant community is encouraged as an integral part of the PoK model. Through discussions, collaborations, and knowledge-sharing initiatives, participants immerse themselves in a dynamic ecosystem where insights are exchanged, ideas are nurtured, and connections are forged. This interactive environment not only enriches individual experiences but also contributes to the collective growth and development of our project.
+                  <br>
+                  <br>
+                  By embracing the PoK model, NordaHub is committed to cultivating a community of informed and passionate stakeholders who share our vision for the future of digital finance. Through education, engagement, and collaboration, we empower individuals to unlock exclusive benefits, participate meaningfully in our project, and contribute to the realization of our collective aspirations. Join us on this journey, where knowledge is the key to unlocking boundless opportunities in the dynamic world of decentralized finance.</p>
+                <p>Presale include PoK on all the chains in the future.</p>
+                <p>Presale is a $10,000 softcap.</p></div>
+              
+                </div>
+
+          </div>
+          <h2>Tokenomics</h2>
+          <ul class="nobullet">
+            <li><strong>Symbol:</strong> PoK</li>
+            <li><strong>Decimals:</strong> 18</li>
+            <li><strong>Total supply:</strong> 1,000,000 PoK</li>
+            <li><strong>TaX</strong> 4/4</li>
+        </ul>
+          <div id="tokenomicsChartContainer">
+              <canvas id="tokenomicsChart"></canvas>
+          </div>
+      </div>
+      </div>
+    
+  </section>
+
+
+
+  
+      <footer class="footer">
+        <div class="footer__bar">
+          Copyright © 2024 FNXEcosystem. All rights reserved.
+        </div>
+      </footer>
+  
+      <script src="https://unpkg.com/scrollreveal"></script>
+      <script src="/assets/main.js"></script>
+      <script src="/script.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Data for the Tokenomics pie chart
+    const tokenomicsData = {
+        labels: ['Team', 'Quizzes', 'Ecosystem', 'Presale', 'Pool', ],
+        datasets: [{
+            data: [15, 5, 10, 10, 60,], // Example percentages, adjust as needed
+            backgroundColor: [
+                '#ff6384',
+                '#36a2eb',
+                '#ffce56',
+                '#4bc0c0',
+                '#9966ff'
+            ]
+        }]
+    };
+
+    // Options for the Tokenomics pie chart
+    const tokenomicsOptions = {
+        responsive: true,
+        maintainAspectRatio: false
+    };
+
+    // Create the Tokenomics pie chart
+    const tokenomicsChart = new Chart(document.getElementById('tokenomicsChart'), {
+        type: 'pie',
+        data: tokenomicsData,
+        options: tokenomicsOptions
+    });
+</script>
+    </body>
