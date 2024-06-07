@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add click event listener
     preasleBtn.addEventListener("click", function () {
         // Navigate to Preasle.html
-        window.location.href = "Presale.html";
+        window.location.href = "presale.html";
     });
 });
 
