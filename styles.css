@@ -152,6 +152,8 @@ nav {
 }
 .header__content {
   text-align: center;
+  background-color: #000000e7;
+  border-radius: 25px; /* You can adjust the value to get the desired roundness */
 }
 
 .header__content h1 {
