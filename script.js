@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add click event listener
     preasleBtn.addEventListener("click", function () {
         // Navigate to Preasle.html
-        window.location.href = "presale.html";
+        window.location.href = "pok.html";
     });
 });
 
@@ -52,7 +52,7 @@ setInterval(updateWalletData, 300000);
 
 
 // Set the end date for the countdown (14th of June 2024, 23:59 Stockholm time)
-const endDate = new Date('2024-06-17T21:59:00Z'); // Convert to UTC time
+const endDate = new Date('2024-06-14T21:59:00Z'); // Convert to UTC time
 
 // Function to update the countdown
 function updateCountdown() {
@@ -112,3 +112,4 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Presale address copied to clipboard: " + presaleAddressElement.textContent);
     });
 });
+
