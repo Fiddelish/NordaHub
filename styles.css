@@ -460,13 +460,12 @@ nav {
 }
 
 .footer {
+  margin-top: 10em;
   background-color: var(--bg-dark);
+  align-items: middle;
+  display: grid;
 }
 
-.footer__container {
-  display: grid;
-  gap: 4rem 2rem;
-}
 
 .footer__col .logo {
   margin-bottom: 2rem;
@@ -604,8 +603,12 @@ nav {
   font-size: 300px; /* Adjust as needed */
 }
 .footer__container {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  row-gap: 2rem;
+  display: flex; /* Enables flexbox layout */
+  flex-direction: column; /* Arranges children in a column */
+  justify-content: center; /* Centers children vertically */
+  align-items: center; /* Centers children horizontally */
+  row-gap: 2rem; /* Adds vertical space between children */
+  height: 100%; /* Ensures the container takes up the full height of its parent */
 }
 
 .footer__logo {
@@ -708,7 +711,24 @@ nav {
   margin-right: 8px;
   font-size: 18px; /* Adjust icon size if needed */
 }
+.buy-button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #ff007a;
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
+.buy-button:hover {
+  background-color: #cc0066;
+}
 /* Individual button colors */
 .telegram-link .button {
   background-color: #0088cc; /* Telegram blue */
@@ -742,9 +762,7 @@ nav {
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .footer__container {
-    grid-template-columns: repeat(2, 1fr);
-  }
+
 
   .footer__col:last-child {
     grid-area: 2/1/3/2;
@@ -806,9 +824,6 @@ nav {
     padding: 8rem 2rem;
   }
 
-  .footer__container {
-    grid-template-columns: repeat(5, 1fr);
-  }
 
   .footer__col:first-child {
     grid-column: 1/3;
