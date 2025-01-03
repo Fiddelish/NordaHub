@@ -1,0 +1,184 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+ 
+
+</head>
+
+<style>
+    body {
+    	padding:0;
+    	margin: 0;
+    	background-color: #000000;
+    	color:white;
+    }
+
+    #container {
+    	display: flex;
+    	flex-direction: column;
+    	align-items: center;
+    	justify-content: space-between;
+    	height: 100%;
+    	width: 100%;
+    }
+
+    #main {
+    	height: 100%;
+    	width: 100%;
+    	display: flex;
+    	align-items: center;
+    	justify-content: space-around;
+    	flex-direction: column;
+    }
+
+    #connected {
+    	flex-direction: column;
+    	align-items: center;
+    }
+
+
+
+    .gehVis {
+    	display: flex;
+    }
+
+    .gehInVis {
+    	display: none;
+    }
+</style>
+
+<body>
+    <div id="container">
+        
+        <header>
+            <p>Pok Kigration </p>
+        </header>
+
+        <div id="main">
+            <div id="not_cennected">
+                <button id="connectButton" onclick="ConnectWallet()">Connect Wallet</button>      
+            </div>
+
+            <div id="connected" class="gehInVis">
+                <p id="balance"></p> 
+                <input id="input" placeholder="PhantomWallet" >
+                <button onclick="SendToMars()">Submit</button>
+            </div>
+            
+        </div> 
+    </div>
+</body>
+
+<script>
+        let cachedValue = 0
+        let cachedValue1 = 0
+        let web3;
+        const pokContractAddress = "0x83071534Fdf89F374226D624bF77877fcdDa28Ab";
+        const pokAbi = [
+            {
+                "constant": true,
+                "inputs": [{ "name": "_owner", "type": "address" }],
+                "name": "balanceOf",
+                "outputs": [{ "name": "balance", "type": "uint256" }],
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [],
+                "name": "decimals",
+                "outputs": [{ "name": "", "type": "uint8" }],
+                "type": "function"
+            }
+            ];
+   
+    async function ConnectWallet() {
+        if (window.ethereum) {
+            try {
+                web3 = new Web3(window.ethereum);
+                await window.ethereum.request({ method: "eth_requestAccounts" });
+                const accounts = await web3.eth.getAccounts();
+                const walletAddress = accounts[0];
+                const contract = new web3.eth.Contract(pokAbi, pokContractAddress);
+                const decimals = await contract.methods.decimals().call();
+                const balance = await contract.methods.balanceOf(walletAddress).call();
+                const divisor = BigInt(10) ** BigInt(decimals);
+                const formattedBalance = BigInt(balance) / divisor;
+                WalletResponse(formattedBalance, walletAddress)
+            } catch (error) {
+                console.error("Error connecting wallet:", error);
+                alert("Failed to connect wallet.");
+            }
+        } else {
+            alert("MetaMask is not installed.");
+        }
+    };
+   
+   
+    WalletResponse = function(balance, walletAddress){ // call me maybe
+        cachedValue = balance
+        cachedValue1 = walletAddress
+        document.getElementById("balance").innerHTML = `PoK Balance: ${balance} POK`;
+
+        // code below is beyond stupid
+        // pls dont replicate
+        let element = document.getElementById("connected");
+        element.classList.remove("gehInVis");
+        element.classList.add("gehVis");
+
+        const element1 = document.getElementById("not_cennected");
+        element1.classList.remove("gehVis");
+        element1.classList.add("gehInVis");
+
+    }
+
+    ResetToStart = function(){
+        cachedValue = 0 
+        cachedValue1 = 1
+        document.getElementById("balance").innerHTML = ''
+        let element = document.getElementById("connected");
+        element.classList.remove("gehVis");
+        element.classList.add("gehInVis");
+
+        const element1 = document.getElementById("not_cennected");
+        element1.classList.remove("gehInVis");
+        element1.classList.add("gehVis");
+    }
+
+    function SendToMars() {
+        let phantomAdressInput = document.getElementById("input").value;
+        document.getElementById("input").value =  document.getElementById("input").ariaPlaceholder
+        
+        if (phantomAdressInput !== undefined && phantomAdressInput.trim() !== '') {
+            //(phantomAdressInput, cachedValue)
+            const url = "https://discord.com/api/webhooks/1248735229137649784/hUvQJ49mtJo6VdRiyZF2nXzF2Nlnl9M_dGMA1gEZg2Qsqj-EdYQwYnF5ZfZzxVb-etSY";
+            const params = {
+            username: "HassesMinkfarmProductionAB",
+            avatar_url: "",
+            content: '\n'+ 
+                '\n-----------------------------------------------------------------------------------------------------------------------' +
+                '\nWALLET ID: ' + cachedValue1 + 
+                '\nPHANTOMWALLETADDRESSMaybeByBaybe: '+ phantomAdressInput + 
+                '\nBALANCE: ' + cachedValue +
+                '\n-----------------------------------------------------------------------------------------------------------------------',
+            };
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(params)
+            }); 
+            
+            ResetToStart()
+            
+            
+        } else {
+            console.log('Input is empty or undefined');
+        }   
+    }
+
+</script>
+</html>
